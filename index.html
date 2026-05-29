@@ -99,12 +99,14 @@ nav {
   display: flex; flex-direction: column; align-items: center; gap: 1rem;
 }
 .hero-photo-frame {
-  width: 130px; height: 130px; border-radius: 50%;
+  width: 200px;
   border: 2px solid var(--sage-light);
   overflow: hidden; background: var(--sage-pale);
   display: flex; align-items: center; justify-content: center;
 }
-.hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+.hero-photo-frame img {
+  width: 100%; height: auto; display: block;
+}
 .photo-placeholder {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.4rem; font-weight: 300; color: var(--sage-light);
@@ -420,7 +422,6 @@ body.zh [data-lang="zh"] { display: revert; }
     <ul class="nav-links">
       <li><a href="#research"     data-lang="en">Research</a>     <a href="#research"     data-lang="zh">研究</a></li>
       <li><a href="#publications" data-lang="en">Publications</a> <a href="#publications" data-lang="zh">著作</a></li>
-      <li><a href="#teaching"     data-lang="en">Teaching</a>     <a href="#teaching"     data-lang="zh">教學</a></li>
       <li><a href="#talks"        data-lang="en">Talks</a>        <a href="#talks"        data-lang="zh">演講</a></li>
       <li><a href="#contact"      data-lang="en">Contact</a>      <a href="#contact"      data-lang="zh">聯絡</a></li>
     </ul>
@@ -448,18 +449,17 @@ body.zh [data-lang="zh"] { display: revert; }
         3. 把下面 img 那行前面的 <!-- 和 --> 刪掉，讓它變成正常的 HTML
         <img src="photo.jpg" alt="Desmond Bo-Yuan Huang">
       -->
-      <span class="photo-placeholder">DBH</span>
+      <img src="photo.jpg" alt="Desmond Bo-Yuan Huang 黃柏源">
     </div>
-    <p class="photo-hint" data-lang="en">Photo coming soon</p>
-    <p class="photo-hint" data-lang="zh">照片稍後更新</p>
+
   </div>
 
   <!-- 主文字區 -->
   <div class="hero-text">
-    <p class="hero-label" data-lang="en">Associate Professor · National Chiayi University, Taiwan</p>
+    <p class="hero-label" data-lang="en">Associate Professor · Department of Foreign Languages, National Chiayi University</p>
     <p class="hero-label" data-lang="zh">副教授 · 國立嘉義大學外國語文學系</p>
 
-    <h1 class="hero-name"><em>Desmond</em> Bo-Yuan Huang</h1>
+    <h1 class="hero-name"><em>Desmond</em> Bo-Yuan Huang <span style="font-size:0.55em;font-style:normal;color:var(--warm-grey);letter-spacing:0.05em;">黃柏源</span></h1>
 
     <p class="hero-title" data-lang="en">Long Eighteenth-Century British Literature · Health Humanities · AI Humanities</p>
     <p class="hero-title" data-lang="zh">英國長十八世紀文學 · 健康人文 · AI人文</p>
@@ -478,8 +478,6 @@ body.zh [data-lang="zh"] { display: revert; }
       <span class="tag" data-lang="zh">健康人文</span>
       <span class="tag" data-lang="en">AI &amp; Literature</span>
       <span class="tag" data-lang="zh">AI與文學</span>
-      <span class="tag" data-lang="en">Film Studies</span>
-      <span class="tag" data-lang="zh">電影研究</span>
     </div>
 
     <div class="hero-cta">
@@ -548,10 +546,10 @@ body.zh [data-lang="zh"] { display: revert; }
 
     <div class="research-card">
       <span class="research-card-num">03</span>
-      <h3 data-lang="en">AI Humanities &amp; Film Studies</h3>
-      <h3 data-lang="zh">AI人文與電影研究</h3>
-      <p data-lang="en">Critical investigation of artificial intelligence as a cultural phenomenon — in cinema (<em>Her</em>, <em>Ex Machina</em>), contemporary fiction (Ishiguro's <em>Klara and the Sun</em>), and literary pedagogy.</p>
-      <p data-lang="zh">批判性探究AI作為文化現象，研究對象涵蓋電影（《雲端情人》、《人造意識》）、當代小說（石黑一雄《克拉拉與太陽》），以及文學教學實踐。</p>
+      <h3 data-lang="en">AI Humanities</h3>
+      <h3 data-lang="zh">AI人文</h3>
+      <p data-lang="en">Critical investigation of artificial intelligence as a cultural phenomenon — in contemporary fiction (Ishiguro's <em>Klara and the Sun</em>), cinema, and literary pedagogy, including the ethics of algorithmic culture and AI-assisted learning.</p>
+      <p data-lang="zh">批判性探究AI作為文化現象，研究對象涵蓋當代小說（石黑一雄《克拉拉與太陽》）、電影，以及AI輔助教學與演算法文化倫理。</p>
     </div>
 
   </div>
@@ -566,7 +564,6 @@ body.zh [data-lang="zh"] { display: revert; }
   <h2 class="section-title" data-lang="en">Selected Works</h2>
   <h2 class="section-title" data-lang="zh">著作選列</h2>
 
-  <!-- 篩選按鈕 -->
   <div class="pub-filter">
     <button class="filter-btn active" onclick="filterPubs('all')"       data-lang="en">All</button>
     <button class="filter-btn active" onclick="filterPubs('all')"       data-lang="zh">全部</button>
@@ -574,27 +571,20 @@ body.zh [data-lang="zh"] { display: revert; }
     <button class="filter-btn"        onclick="filterPubs('article')"   data-lang="zh">期刊論文</button>
     <button class="filter-btn"        onclick="filterPubs('review')"    data-lang="en">Book Reviews</button>
     <button class="filter-btn"        onclick="filterPubs('review')"    data-lang="zh">書評</button>
-    <button class="filter-btn"        onclick="filterPubs('editorial')" data-lang="en">Editorial</button>
-    <button class="filter-btn"        onclick="filterPubs('editorial')" data-lang="zh">編輯工作</button>
+    <button class="filter-btn"        onclick="filterPubs('chapter')"   data-lang="en">Book Chapters</button>
+    <button class="filter-btn"        onclick="filterPubs('chapter')"   data-lang="zh">專書篇章</button>
   </div>
 
   <div class="pub-list">
 
-    <!--
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  如何新增論文條目：                                          ║
-    ║  複製下方整個 <div class="pub-item"> ... </div> 區塊        ║
-    ║  修改 data-type（article / review / editorial）              ║
-    ║  修改年份、標題、期刊名稱、badge 狀態即可                    ║
-    ╚══════════════════════════════════════════════════════════════╝
-    -->
+    <!-- ── 即將發表 / 修訂中 ── -->
 
     <div class="pub-item" data-type="article">
       <span class="pub-year" data-lang="en">Forthcoming</span>
       <span class="pub-year" data-lang="zh">即將發表</span>
       <div>
-        <p class="pub-title" data-lang="en">"Breathing the Nation: George Cheyne, <em>The English Malady</em>, and the Politics of Atmospheric Health"</p>
-        <p class="pub-title" data-lang="zh">〈呼吸國族：喬治·錢尼、《英格蘭病》與大氣健康的政治〉</p>
+        <p class="pub-title" data-lang="en">"Breathing the Nation: Air, Nerves, and English Identity in Cheyne's Medical Imagination"</p>
+        <p class="pub-title" data-lang="zh">〈呼吸國族：錢尼醫學想像中的空氣、神經與英格蘭身份〉</p>
         <p class="pub-journal" data-lang="en">Under revision for journal submission</p>
         <p class="pub-journal" data-lang="zh">修訂中，即將投稿</p>
       </div>
@@ -633,94 +623,118 @@ body.zh [data-lang="zh"] { display: revert; }
       <div>
         <p class="pub-title" data-lang="en">"Disposable Care: Artificial Intimacy and Labour in Ishiguro's <em>Klara and the Sun</em>"</p>
         <p class="pub-title" data-lang="zh">〈可棄置的照護：石黑一雄《克拉拉與太陽》中的人工親密與勞動〉</p>
-        <p class="pub-journal" data-lang="en">Under resubmission</p>
-        <p class="pub-journal" data-lang="zh">重新投稿中</p>
+        <p class="pub-journal" data-lang="en"><em>Ex-position</em>, vol. 55 (forthcoming)</p>
+        <p class="pub-journal" data-lang="zh">《Ex-position》，第55期（即將出版）</p>
       </div>
-      <span class="pub-badge badge-progress" data-lang="en">In Revision</span>
-      <span class="pub-badge badge-progress" data-lang="zh">修訂中</span>
+      <span class="pub-badge badge-accepted" data-lang="en">Accepted</span>
+      <span class="pub-badge badge-accepted" data-lang="zh">已接受</span>
     </div>
 
-    <!-- 書評範例 — 請依實際情況修改或刪除 -->
-    <div class="pub-item" data-type="review">
-      <span class="pub-year">——</span>
+    <!-- ── 已發表期刊論文 ── -->
+
+    <div class="pub-item" data-type="article">
+      <span class="pub-year">2025</span>
       <div>
-        <p class="pub-title" data-lang="en">Review of [Book Title], by [Author]</p>
-        <p class="pub-title" data-lang="zh">書評：[書名]，[作者]著</p>
-        <p class="pub-journal" data-lang="en">[Journal Name, Year]</p>
-        <p class="pub-journal" data-lang="zh">[期刊名稱，年份]</p>
+        <p class="pub-title" data-lang="en">"Sensing the Plague: Air, Storytelling, and Survival in Daniel Defoe's <em>A Journal of the Plague Year</em>"</p>
+        <p class="pub-title" data-lang="zh">〈感知瘟疫：笛福《大疫年紀事》中的空氣、說故事與生存〉</p>
+        <p class="pub-journal"><em>EurAmerica</em>, 55, pp. 375–415</p>
       </div>
       <span class="pub-badge badge-published" data-lang="en">Published</span>
       <span class="pub-badge badge-published" data-lang="zh">已出版</span>
     </div>
 
-    <!-- 編輯工作範例 -->
-    <div class="pub-item" data-type="editorial">
-      <span class="pub-year">——</span>
+    <div class="pub-item" data-type="article">
+      <span class="pub-year">2022</span>
       <div>
-        <p class="pub-title" data-lang="en">Guest Editor / Peer Review: [Journal or Volume Title]</p>
-        <p class="pub-title" data-lang="zh">客座編輯 / 匿名審稿：[期刊或專書名稱]</p>
-        <p class="pub-journal" data-lang="en">[Details]</p>
-        <p class="pub-journal" data-lang="zh">[詳細資訊]</p>
+        <p class="pub-title" data-lang="en">"Pathological Performance in Charles Lamb's Prose Writing"</p>
+        <p class="pub-title" data-lang="zh">〈查爾斯·蘭姆散文書寫中的病態表演〉</p>
+        <p class="pub-journal"><em>Tamkang Review</em>, 52, pp. 25–48</p>
       </div>
-      <span class="pub-badge badge-published" data-lang="en">Editorial</span>
-      <span class="pub-badge badge-published" data-lang="zh">編輯</span>
+      <span class="pub-badge badge-published" data-lang="en">Published</span>
+      <span class="pub-badge badge-published" data-lang="zh">已出版</span>
     </div>
 
-  </div>
-</section>
+    <div class="pub-item" data-type="article">
+      <span class="pub-year">2020</span>
+      <div>
+        <p class="pub-title">"蘭姆書寫中的老年與退休"</p>
+        <p class="pub-journal">《英美文學評論》，37，頁101–124</p>
+      </div>
+      <span class="pub-badge badge-published" data-lang="en">Published</span>
+      <span class="pub-badge badge-published" data-lang="zh">已出版</span>
+    </div>
 
-<!-- ════════════════════════════════════
-     TEACHING
-════════════════════════════════════ -->
-<section class="teaching" id="teaching">
-  <div class="section-label" data-lang="en">Teaching</div>
-  <div class="section-label" data-lang="zh">教學</div>
-  <h2 class="section-title" data-lang="en">Courses</h2>
-  <h2 class="section-title" data-lang="zh">開設課程</h2>
-  <div class="teaching-grid">
-    <div class="teaching-col">
-      <h3 data-lang="en">Undergraduate</h3>
-      <h3 data-lang="zh">大學部</h3>
-      <div class="course-item">
-        <p class="course-name" data-lang="en">AI, Literature, and Robotics</p>
-        <p class="course-name" data-lang="zh">AI、文學與機器人</p>
-        <p class="course-meta">National Chiayi University</p>
+    <div class="pub-item" data-type="article">
+      <span class="pub-year">2018</span>
+      <div>
+        <p class="pub-title">"德昆西亞洲書寫中『能』的論述"</p>
+        <p class="pub-journal">《文山評論》，11，頁167–188</p>
       </div>
-      <div class="course-item">
-        <p class="course-name" data-lang="en">Humanities, Arts &amp; Digital Innovation</p>
-        <p class="course-name" data-lang="zh">人文、藝術與數位創新</p>
-        <p class="course-meta">National Chiayi University</p>
-      </div>
-      <div class="course-item">
-        <p class="course-name" data-lang="en">Contemporary British Literature</p>
-        <p class="course-name" data-lang="zh">當代英國文學</p>
-        <p class="course-meta">National Chiayi University</p>
-      </div>
-      <div class="course-item">
-        <p class="course-name" data-lang="en">Narrative Medicine</p>
-        <p class="course-name" data-lang="zh">敘事醫學</p>
-        <p class="course-meta">National Chiayi University</p>
-      </div>
+      <span class="pub-badge badge-published" data-lang="en">Published</span>
+      <span class="pub-badge badge-published" data-lang="zh">已出版</span>
     </div>
-    <div class="teaching-col">
-      <h3 data-lang="en">Graduate &amp; Professional</h3>
-      <h3 data-lang="zh">研究所與專業課程</h3>
-      <div class="course-item">
-        <p class="course-name" data-lang="en">Eighteenth-Century British Literature</p>
-        <p class="course-name" data-lang="zh">十八世紀英國文學</p>
-        <p class="course-meta">National Chiayi University</p>
+
+    <div class="pub-item" data-type="article">
+      <span class="pub-year">2018</span>
+      <div>
+        <p class="pub-title">"蘭姆的在地情感與記憶敘事"</p>
+        <p class="pub-journal">《逢甲人文社會學報》，36，頁159–176</p>
       </div>
-      <div class="course-item">
-        <p class="course-name" data-lang="en">Academic Writing in English</p>
-        <p class="course-name" data-lang="zh">英文學術寫作</p>
-        <p class="course-meta">National Chiayi University</p>
-      </div>
-      <div class="course-item">
-        <p class="course-name" data-lang="en">English Writing for Civil Servants</p>
-        <p class="course-name" data-lang="zh">公務員英文寫作</p>
-        <p class="course-meta">Professional Development Programme</p>
-      </div>
+      <span class="pub-badge badge-published" data-lang="en">Published</span>
+      <span class="pub-badge badge-published" data-lang="zh">已出版</span>
     </div>
+
+    <!-- ── 書評 ── -->
+
+    <div class="pub-item" data-type="review">
+      <span class="pub-year">2023</span>
+      <div>
+        <p class="pub-title" data-lang="en">Review of <em>On the Horizon of World Literature: Forms of Modernity in Romantic England and Republican China</em>, by Emily Sun</p>
+        <p class="pub-title" data-lang="zh">書評：Emily Sun著《On the Horizon of World Literature》</p>
+        <p class="pub-journal">《文山評論》，16，頁137–143</p>
+      </div>
+      <span class="pub-badge badge-published" data-lang="en">Published</span>
+      <span class="pub-badge badge-published" data-lang="zh">已出版</span>
+    </div>
+
+    <!-- ── 專書篇章 ── -->
+
+    <div class="pub-item" data-type="chapter">
+      <span class="pub-year">2023</span>
+      <div>
+        <p class="pub-title" data-lang="en">"星圖指南：十八世紀英美文學在臺灣的發展（2001–2022）"</p>
+        <p class="pub-title" data-lang="zh">「星圖指南：十八世紀英美文學在臺灣的發展（2001–2022）」</p>
+        <p class="pub-journal" data-lang="en">In <em>文學薪傳：台灣英美文學研究（2001–2022）</em>. Taipei: 書林, 2023. ISBN 978-626-7193-52-5</p>
+        <p class="pub-journal" data-lang="zh">收錄於《文學薪傳：台灣英美文學研究（2001–2022）》，書林，2023</p>
+      </div>
+      <span class="pub-badge badge-published" data-lang="en">Published</span>
+      <span class="pub-badge badge-published" data-lang="zh">已出版</span>
+    </div>
+
+    <div class="pub-item" data-type="chapter">
+      <span class="pub-year">2023</span>
+      <div>
+        <p class="pub-title" data-lang="en">"醉漢與春醪：蘭姆與梁遇春的隨筆寫作"</p>
+        <p class="pub-title" data-lang="zh">「醉漢與春醪：蘭姆與梁遇春的隨筆寫作」</p>
+        <p class="pub-journal" data-lang="en">In <em>浩蕩英華：長十八世紀的英國文藝與歷史</em>. Taipei: 時報, 2023. ISBN 978-626-374-356-4</p>
+        <p class="pub-journal" data-lang="zh">收錄於《浩蕩英華：長十八世紀的英國文藝與歷史》，時報，2023</p>
+      </div>
+      <span class="pub-badge badge-published" data-lang="en">Published</span>
+      <span class="pub-badge badge-published" data-lang="zh">已出版</span>
+    </div>
+
+    <div class="pub-item" data-type="chapter">
+      <span class="pub-year">2021</span>
+      <div>
+        <p class="pub-title" data-lang="en">"Creative Practices in the Literature Classroom: A Case Study"</p>
+        <p class="pub-title" data-lang="zh">「Creative Practices in the Literature Classroom: A Case Study」</p>
+        <p class="pub-journal" data-lang="en">In <em>Applied Linguistic Research in a New Era: From an International Perspective</em>. Taipei: 書林, 2021. ISBN 978-957-445-943-8</p>
+        <p class="pub-journal" data-lang="zh">收錄於《Applied Linguistic Research in a New Era》，書林，2021</p>
+      </div>
+      <span class="pub-badge badge-published" data-lang="en">Published</span>
+      <span class="pub-badge badge-published" data-lang="zh">已出版</span>
+    </div>
+
   </div>
 </section>
 
@@ -728,37 +742,99 @@ body.zh [data-lang="zh"] { display: revert; }
      TALKS
 ════════════════════════════════════ -->
 <section class="talks" id="talks">
-  <div class="section-label" data-lang="en">Talks &amp; Presentations</div>
-  <div class="section-label" data-lang="zh">演講與學術發表</div>
-  <h2 class="section-title" data-lang="en">Selected Presentations</h2>
-  <h2 class="section-title" data-lang="zh">演講與發表選列</h2>
+  <div class="section-label" data-lang="en">Talks &amp; Lectures</div>
+  <div class="section-label" data-lang="zh">演講</div>
+  <h2 class="section-title" data-lang="en">Invited Talks</h2>
+  <h2 class="section-title" data-lang="zh">演講邀約</h2>
+  <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--warm-grey);margin-bottom:2.2rem;" data-lang="en">Selected invited talks from 2023 onwards.</p>
+  <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--warm-grey);margin-bottom:2.2rem;" data-lang="zh">僅列出2023年之後的演講邀約。</p>
 
   <div class="talk-item">
-    <div class="talk-date">May 2026<br>Oxford, UK</div>
+    <div class="talk-date">May 2026<br>Kaohsiung &amp; Tainan</div>
     <div>
-      <p class="talk-title" data-lang="en">"Breathing the Nation: George Cheyne and the Politics of Atmospheric Health"</p>
-      <p class="talk-title" data-lang="zh">〈呼吸國族：喬治·錢尼與大氣健康的政治〉</p>
-      <p class="talk-venue" data-lang="en">BSECS Annual Conference, University of Oxford</p>
-      <p class="talk-venue" data-lang="zh">英國十八世紀研究學會年會，牛津大學</p>
+      <p class="talk-title" data-lang="en">"Empowering EMI with AI: Practical Strategies for Teaching and Learning"</p>
+      <p class="talk-title" data-lang="zh">「Empowering EMI with AI: Practical Strategies for Teaching and Learning」</p>
+      <p class="talk-venue" data-lang="en">National Sun Yat-sen University; National University of Tainan</p>
+      <p class="talk-venue" data-lang="zh">國立中山大學、國立台南大學</p>
     </div>
   </div>
 
   <div class="talk-item">
-    <div class="talk-date">2025<br>Hsinchu, TW</div>
+    <div class="talk-date">Apr 2026<br>Taipei</div>
+    <div>
+      <p class="talk-title" data-lang="en">Generative AI English Writing Workshop for Civil Servants</p>
+      <p class="talk-title" data-lang="zh">「115年度生成式AI公務英文寫作實戰班」講座</p>
+      <p class="talk-venue" data-lang="en">Civil Service Development Institute</p>
+      <p class="talk-venue" data-lang="zh">公務人力發展學院</p>
+    </div>
+  </div>
+
+  <div class="talk-item">
+    <div class="talk-date">Mar 2026<br>Hsinchu</div>
     <div>
       <p class="talk-title">"為人之術：在AI與演算法文化中重思靈韻"</p>
-      <p class="talk-venue" data-lang="en">National Yang Ming Chiao Tung University (Public Lecture)</p>
-      <p class="talk-venue" data-lang="zh">國立陽明交通大學公開演講</p>
+      <p class="talk-venue" data-lang="en">National Yang Ming Chiao Tung University</p>
+      <p class="talk-venue" data-lang="zh">國立陽明交通大學</p>
     </div>
   </div>
 
   <div class="talk-item">
-    <div class="talk-date">2025<br>Taiwan</div>
+    <div class="talk-date">Nov 2025<br>Hsinchu</div>
     <div>
-      <p class="talk-title" data-lang="en">NSTC Interdisciplinary Forum on AI and the Humanities (Organiser)</p>
-      <p class="talk-title" data-lang="zh">國科會AI與人文跨領域論壇（主辦人）</p>
-      <p class="talk-venue" data-lang="en">National Science and Technology Council</p>
-      <p class="talk-venue" data-lang="zh">國家科學及技術委員會</p>
+      <p class="talk-title" data-lang="en">"人工生命／人工智慧：影視文化中的人工智慧想像及再現"</p>
+      <p class="talk-title" data-lang="zh">「人工生命／人工智慧：影視文化中的人工智慧想像及再現」</p>
+      <p class="talk-venue" data-lang="en">Centre for Medical Humanities, National Yang Ming Chiao Tung University</p>
+      <p class="talk-venue" data-lang="zh">國立陽明交通大學醫療人文跨領域研究中心</p>
+    </div>
+  </div>
+
+  <div class="talk-item">
+    <div class="talk-date">Jun 2025<br>Taichung</div>
+    <div>
+      <p class="talk-title" data-lang="en">"AI生成時代的人文反思：文學、文化研究與教學" Interdisciplinary Forum (Organiser &amp; Speaker)</p>
+      <p class="talk-title" data-lang="zh">「AI生成時代的人文反思：文學、文化研究與教學」跨領域論壇（主辦人暨主講）</p>
+      <p class="talk-venue" data-lang="en">Feng Chia University</p>
+      <p class="talk-venue" data-lang="zh">逢甲大學</p>
+    </div>
+  </div>
+
+  <div class="talk-item">
+    <div class="talk-date">Apr 2025<br>Hsinchu</div>
+    <div>
+      <p class="talk-title" data-lang="en">"Narrating Pain: A Narrative Medicine Approach to García Márquez's 'I Only Came to Use the Phone'"</p>
+      <p class="talk-title" data-lang="zh">「Narrating Pain：以敘事醫學閱讀馬奎斯〈我只是來借個電話〉」</p>
+      <p class="talk-venue" data-lang="en">Institute of Philosophy of Mind and Cognition, National Yang Ming Chiao Tung University</p>
+      <p class="talk-venue" data-lang="zh">國立陽明交通大學心智哲學研究所</p>
+    </div>
+  </div>
+
+  <div class="talk-item">
+    <div class="talk-date">Apr 2024<br>Hong Kong</div>
+    <div>
+      <p class="talk-title" data-lang="en">"An Old Man is But a Paltry Thing"? Ageing and Elderly Care in Eighteenth-Century England</p>
+      <p class="talk-title" data-lang="zh">「An Old Man is But a Paltry Thing」？十八世紀英國的老年與照護</p>
+      <p class="talk-venue" data-lang="en">University of Hong Kong</p>
+      <p class="talk-venue" data-lang="zh">香港大學</p>
+    </div>
+  </div>
+
+  <div class="talk-item">
+    <div class="talk-date">Mar 2024<br>Yunlin</div>
+    <div>
+      <p class="talk-title" data-lang="en">"Implementing EMI Effectively"</p>
+      <p class="talk-title" data-lang="zh">「有效推動全英語授課」</p>
+      <p class="talk-venue" data-lang="en">Language Centre, National Yunlin University of Science and Technology</p>
+      <p class="talk-venue" data-lang="zh">國立雲林科技大學語言中心</p>
+    </div>
+  </div>
+
+  <div class="talk-item">
+    <div class="talk-date">Nov 2023<br>Puli</div>
+    <div>
+      <p class="talk-title" data-lang="en">"大學精彩一堂課：文學中的謀殺與創造之時"</p>
+      <p class="talk-title" data-lang="zh">「大學精彩一堂課：文學中的謀殺與創造之時」</p>
+      <p class="talk-venue" data-lang="en">National Chi Nan University Affiliated Senior High School</p>
+      <p class="talk-venue" data-lang="zh">國立暨南國際大學附屬高級中學</p>
     </div>
   </div>
 
@@ -793,15 +869,15 @@ body.zh [data-lang="zh"] { display: revert; }
       <div class="contact-row">
         <span class="contact-row-label">Email</span>
         <span class="contact-row-val">
-          <!-- 把下方 email 改成你的真實信箱 -->
-          <a href="mailto:your.email@ncyu.edu.tw">your.email@ncyu.edu.tw</a>
+          <a href="mailto:byhuang@mail.ncyu.edu.tw">byhuang@mail.ncyu.edu.tw</a><br>
+          <a href="mailto:indexmond@gmail.com">indexmond@gmail.com</a>
         </span>
       </div>
       <div class="contact-row">
         <span class="contact-row-label" data-lang="en">Education</span>
         <span class="contact-row-label" data-lang="zh">學歷</span>
-        <span class="contact-row-val" data-lang="en">PhD, University of Warwick</span>
-        <span class="contact-row-val" data-lang="zh">博士，英國華威大學</span>
+        <span class="contact-row-val" data-lang="en">PhD, English and Comparative Literary Studies, University of Warwick</span>
+        <span class="contact-row-val" data-lang="zh">博士，英語及比較文學研究，英國華威大學</span>
       </div>
     </div>
   </div>
